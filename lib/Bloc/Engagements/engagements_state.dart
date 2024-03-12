@@ -14,13 +14,15 @@ class EngagementsLoadingState extends EngagementsState {
   UserData user;
   final List<ResultToday> todayResult;
   final List<ResultFuture>? futureResult;
+ final List<TypeQuesDetailsToday>? typeQuesDetails;
+
+  // final List<ResultTodayEngagement>? todayResultEngagements;
   int? todayCount;
   int? futureCount;
   bool isLoading;
   int todayCurrentPage;
   int futureCurrentPage;
-  Result? result;
-
+  ResultTodayEngagement? result;
 
   EngagementsLoadingState({
     required this.user,
@@ -29,7 +31,9 @@ class EngagementsLoadingState extends EngagementsState {
     this.isClicked = true,
     this.todayCount,
     this.futureCount,
+    this.typeQuesDetails,
     required this.isLoading,
+    // this.todayResultEngagements,
     this.todayCurrentPage = 1,
     this.futureCurrentPage = 1,
     this.result,
@@ -41,23 +45,29 @@ class EngagementsLoadingState extends EngagementsState {
     List<ResultToday>? todayResult,
     List<ResultFuture>? futureResult,
     int? todayCount,
+    // List<ResultTodayEngagement>? todayResultEngagements,
     int? futureCount,
+    List<TypeQuesDetailsToday>? typeQuesDetails,
+
     bool? isLoading,
     int? todayCurrentPage,
     int? futureCurrentPage,
-    Result? result,
+    ResultTodayEngagement? result,
   }) {
-   return EngagementsLoadingState(
+    return EngagementsLoadingState(
       user: user ?? this.user,
       todayResult: todayResult ?? this.todayResult,
       isLoading: isLoading ?? this.isLoading,
       todayCurrentPage: todayCurrentPage ?? this.todayCurrentPage,
       futureCurrentPage: futureCurrentPage ?? this.futureCurrentPage,
+      typeQuesDetails: typeQuesDetails??this.typeQuesDetails,
+      // todayResultEngagements:
+      //     todayResultEngagements ?? this.todayResultEngagements,
       todayCount: todayCount ?? this.todayCount,
       futureCount: futureCount ?? this.futureCount,
       futureResult: futureResult ?? this.futureResult,
       isClicked: isClicked ?? this.isClicked,
-     result: result??this.result,
+      result: result ?? this.result,
     );
   }
 
@@ -72,6 +82,8 @@ class EngagementsLoadingState extends EngagementsState {
         isLoading,
         todayCurrentPage,
         futureCurrentPage,
+    typeQuesDetails,
         result,
+    // todayResultEngagements
       ];
 }

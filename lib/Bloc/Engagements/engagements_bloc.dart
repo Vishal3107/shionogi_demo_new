@@ -10,7 +10,6 @@ import 'package:shionogi_trial/Domain/json_today_engagements.dart';
 import '../../Domain/json_profile_list_future.dart';
 
 part 'engagements_event.dart';
-
 part 'engagements_state.dart';
 
 class EngagementsBloc extends Bloc<EngagementsEvent, EngagementsState> {
@@ -194,8 +193,10 @@ class EngagementsBloc extends Bloc<EngagementsEvent, EngagementsState> {
     if (todayListEngagements != null) {
       final listTodayJson =
           ListEngagementsToday.fromJson(todayListEngagements.data);
-      emit(castState.copyWith(result: listTodayJson.result));
+      emit(castState.copyWith(
+        result: listTodayJson.result,
+        typeQuesDetails: listTodayJson.result?.typeQuesDetails?.toList(),
+      ));
     }
-
   }
 }

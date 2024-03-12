@@ -1,7 +1,7 @@
 class ListEngagementsToday {
   bool? apiStatus;
   int? statusCode;
-  Result? result;
+  ResultTodayEngagement? result;
   String? message;
   List<GetBulkList>? getBulkList;
 
@@ -16,7 +16,7 @@ class ListEngagementsToday {
     apiStatus = json['apiStatus'];
     statusCode = json['statusCode'];
     result =
-    json['result'] != null ? Result.fromJson(json['result']) : null;
+    json['result'] != null ? ResultTodayEngagement.fromJson(json['result']) : null;
     message = json['message'];
     if (json['getBulkList'] != null) {
       getBulkList = <GetBulkList>[];
@@ -41,7 +41,7 @@ class ListEngagementsToday {
   }
 }
 
-class Result {
+class ResultTodayEngagement {
   List<MeetingVenues>? meetingVenues;
   // List<Null>? details;
   // List<Null>? av;
@@ -168,13 +168,13 @@ class Result {
   int? cancelledButtonEnabled;
   List<ApprovalDocumentDetails>? approvalDocumentDetails;
   bool? isCrcDocumentUpdate;
-  List<TypeQuesDetails>? typeQuesDetails;
+  List<TypeQuesDetailsToday>? typeQuesDetails;
   String? displayStatus;
   PayeeInfo? payeeInfo;
   W9FormInfo? w9FormInfo;
   String? signInQrUrl;
 
-  Result(
+  ResultTodayEngagement(
       {this.meetingVenues,
         // this.details,
         // this.av,
@@ -307,7 +307,7 @@ class Result {
         this.w9FormInfo,
         this.signInQrUrl});
 
-  Result.fromJson(Map<String, dynamic> json) {
+  ResultTodayEngagement.fromJson(Map<String, dynamic> json) {
     if (json['meetingVenues'] != null) {
       meetingVenues = <MeetingVenues>[];
       json['meetingVenues'].forEach((v) {
@@ -515,9 +515,9 @@ class Result {
     }
     isCrcDocumentUpdate = json['is_Crc_Document_update'];
     if (json['typeQuesDetails'] != null) {
-      typeQuesDetails = <TypeQuesDetails>[];
+      typeQuesDetails = <TypeQuesDetailsToday>[];
       json['typeQuesDetails'].forEach((v) {
-        typeQuesDetails!.add(TypeQuesDetails.fromJson(v));
+        typeQuesDetails!.add(TypeQuesDetailsToday.fromJson(v));
       });
     }
     displayStatus = json['displayStatus'];
@@ -2153,7 +2153,7 @@ class ApprovalDocumentDetails {
   }
 }
 
-class TypeQuesDetails {
+class TypeQuesDetailsToday {
   LabelQueId? labelQueId;
   OptionId? optionId;
   int? meeting;
@@ -2163,7 +2163,7 @@ class TypeQuesDetails {
   String? createdAt;
   String? updatedAt;
 
-  TypeQuesDetails(
+  TypeQuesDetailsToday(
       {this.labelQueId,
         this.optionId,
         this.meeting,
@@ -2173,7 +2173,7 @@ class TypeQuesDetails {
         this.createdAt,
         this.updatedAt});
 
-  TypeQuesDetails.fromJson(Map<String, dynamic> json) {
+  TypeQuesDetailsToday.fromJson(Map<String, dynamic> json) {
     labelQueId = json['label_que_id'] != null
         ? LabelQueId.fromJson(json['label_que_id'])
         : null;

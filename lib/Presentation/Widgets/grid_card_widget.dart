@@ -47,16 +47,22 @@ class GridCard extends StatelessWidget {
                       child: InkWell(
                         hoverColor: Colors.transparent,
                         onTap: () {
-                          showDialog(
-                              barrierDismissible: false,
-                              context: builderContext,
-                              builder: (BuildContext context) {
-                                return BlocProvider.value(
-                                  value: BlocProvider.of<EngagementsBloc>(
-                                      builderContext),
-                                  child:const TodayPreviewWidget(),
-                                );
-                              });
+                          // showDialog(
+                          //     barrierDismissible: false,
+                          //     context: builderContext,
+                          //     builder: (BuildContext context) {
+                          //       return BlocProvider.value(
+                          //         value: BlocProvider.of<EngagementsBloc>(
+                          //             builderContext),
+                          //         child:const TodayPreviewWidget(),
+                          //       );
+                          //     });
+                          _showDialog(builderContext);
+                          builderContext
+                              .read<EngagementsBloc>()
+                              .add(TodayCardClickedEvent(
+                                  index: index));
+                          // print(index);
                         },
                         child: Card(
                           margin: const EdgeInsets.all(10),
@@ -216,12 +222,12 @@ class GridCard extends StatelessWidget {
                                       children: [
                                         ElevatedButton(
                                           onPressed: () {
-                                            _showDialog(builderContext);
-                                            builderContext
-                                                .read<EngagementsBloc>()
-                                                .add(TodayCardClickedEvent(
-                                                    index: index));
-                                            print(index);
+                                            // _showDialog(builderContext);
+                                            // builderContext
+                                            //     .read<EngagementsBloc>()
+                                            //     .add(TodayCardClickedEvent(
+                                            //         index: index));
+                                            // print(index);
                                           },
                                           // context.read<EngagementsBloc>().add(
                                           //     TodayCardClickedEvent(
@@ -630,7 +636,7 @@ class GridCard extends StatelessWidget {
       builder: (BuildContext context) {
         return BlocProvider.value(
           value: BlocProvider.of<EngagementsBloc>(builderContext),
-          child: TodayPreviewWidget(),
+          child: const TodayPreviewWidget(),
         );
         // context.read<EngagementsBloc>().add(const TodayCardClickedEvent());
         // return BlocProvider(
